@@ -8,4 +8,4 @@ layout: default
 {% include hero.html %}
 {% include heritage.html %}
 {% include about.html %}
-{% include impact.html %}
+{% include publishing-step.html %}
