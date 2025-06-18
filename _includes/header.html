@@ -1,0 +1,151 @@
+<!-- Tailwind CDN -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<!-- Header -->
+<header class="top-0 left-0 w-full bg-white z-50 shadow-md border-b border-[#FDA79B]">
+  <div class="w-full px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+
+    <!-- Logo -->
+    <div class="flex items-center">
+      <a href="{{ '/' | relative_url }}">
+        <img src="{{ 'images/Landscape_TKS_Logo.png' | relative_url }}" alt="Shiplab Logo" style="height: 3.5rem;" />
+      </a>
+    </div>
+
+    <!-- Hamburger Button (Mobile) -->
+    <button id="menuToggle" class="sm:hidden text-2xl text-gray-800 focus:outline-none">
+      &#9776;
+    </button>
+
+    <!-- Navigation (Default: hidden on mobile) -->
+    <nav id="navMenu" class="hidden sm:flex gap-6 text-base text-gray-700 font-medium relative">
+      <a href="{{ '/' | relative_url }}" class="nav-link" data-link="home">Home</a>
+
+      <div class="relative">
+        <button id="programToggle" class="header-button nav-link focus:outline-none group-hover:text-orange-500 transition">
+          Program
+        </button>
+        
+        <div id="programMenu" class="absolute hidden bg-white shadow-lg mt-2 rounded-xl z-50 min-w-[220px] border border-gray-200">
+          <a href="{{ '/program/beasiswa' | relative_url }}" class="block px-5 py-3 text-gray-700 hover:bg-[#1D3557] hover:text-white rounded-t-xl transition-all duration-200 ease-in-out">Program Beasiswa</a>
+          <a href="{{ '/program/fellowship' | relative_url }}" class="block px-5 py-3 text-gray-700 hover:bg-[#1D3557] hover:text-white transition-all duration-200 ease-in-out">Changemaker Fellowship</a>
+          <a href="{{ '/program/alumni' | relative_url }}" class="block px-5 py-3 text-gray-700 hover:bg-[#1D3557] hover:text-white rounded-b-xl transition-all duration-200 ease-in-out">Alumni Circle</a>
+        </div>
+      </div>
+
+      <!-- <a href="{{ '/penerima' | relative_url }}" class="nav-link" data-link="penerima">Penerima</a> -->
+      <div class="relative">
+        <button id="partnershipToggle" class="header-button nav-link focus:outline-none group-hover:text-orange-500 transition">
+          Partnership
+        </button>
+        
+        <div id="partnershipMenu" class="absolute hidden bg-white shadow-lg mt-2 rounded-xl z-50 min-w-[220px] border border-gray-200">
+          <a href="{{ '/partnership/mitra' | relative_url }}" class="block px-5 py-3 text-gray-700 hover:bg-[#1D3557] hover:text-white rounded-t-xl transition-all duration-200 ease-in-out">Mitra Internship</a>
+          <a href="{{ '/partnership/donatur' | relative_url }}" class="block px-5 py-3 text-gray-700 hover:bg-[#1D3557] hover:text-white rounded-t-xl transition-all duration-200 ease-in-out">Donatur</a>
+        </div>
+      </div>
+      <a href="{{ '/contact' | relative_url }}" class="nav-link" data-link="contact">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu (Dropdown) -->
+  <div id="mobileMenu" class="sm:hidden hidden px-6 pb-4">
+    <nav class="flex flex-col gap-3 text-base text-gray-700 font-medium">
+      <a href="{{ '/' | relative_url }}" class="mobile-header-button w-full text-left px-4 py-3 rounded-lg transition" data-link="home">Home</a>
+      <div class="md:hidden">
+        <button id="mobileProgramToggle" class="mobile-header-button w-full text-left px-4 py-3 rounded-lg transition">
+          Program
+        </button>
+        <div id="mobileProgramMenu" class="hidden bg-white px-4 py-2 space-y-1 mt-1">
+          <a href="{{ '/program/beasiswa' | relative_url }}" class="block py-2 px-3 text-gray-700 hover:bg-[#1D3557] hover:text-white rounded-md transition">Program Beasiswa</a>
+          <a href="{{ '/program/fellowship' | relative_url }}" class="block py-2 px-3 text-gray-700 hover:bg-[#1D3557] hover:text-white rounded-md transition">Changemaker Fellowship</a>
+          <a href="{{ '/program/alumni' | relative_url }}" class="block py-2 px-3 text-gray-700 hover:bg-[#1D3557] hover:text-white rounded-md transition">Alumni Circle</a>
+        </div>
+      </div>
+      <!-- <a href="{{ '/penerima' | relative_url }}" class="mobile-header-button w-full text-left px-4 py-3 rounded-lg transition" data-link="penerima">Penerima</a> -->
+      <div class="md:hidden">
+        <button id="mobilePartnershipToggle" class="mobile-header-button w-full text-left px-4 py-3 rounded-lg transition">
+          Partnership
+        </button>
+        <div id="mobilePartnershipMenu" class="hidden bg-white px-4 py-2 space-y-1 mt-1">
+          <a href="{{ '/partnership/mitra' | relative_url }}" class="block py-2 px-3 text-gray-700 hover:bg-[#1D3557] hover:text-white rounded-md transition">Mitra Internship</a>
+          <a href="{{ '/partnership/donatur' | relative_url }}" class="block py-2 px-3 text-gray-700 hover:bg-[#1D3557] hover:text-white rounded-md transition">Donatur</a>
+        </div>
+      </div>
+      <a href="{{ '/contact' | relative_url }}" class="mobile-header-button w-full text-left px-4 py-3 rounded-lg transition" data-link="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const programToggle = document.getElementById('programToggle');
+    const programMenu = document.getElementById('programMenu');
+    const partnershipToggle = document.getElementById('partnershipToggle');
+    const partnershipMenu = document.getElementById('partnershipMenu');
+    const mobileProgramToggle = document.getElementById("mobileProgramToggle");
+    const mobileProgramMenu = document.getElementById("mobileProgramMenu");
+    const mobilePartnershipToggle = document.getElementById("mobilePartnershipToggle");
+    const mobilePartnershipMenu = document.getElementById("mobilePartnershipMenu");
+
+    // Mobile menu toggle
+    if (toggle && mobileMenu) {
+      toggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Desktop dropdown toggle
+    if (programToggle && programMenu) {
+      programToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // cegah klik bubbling
+        programMenu.classList.toggle('hidden');
+        partnershipMenu.classList.add('hidden');
+      });
+    }
+
+    if (partnershipToggle && partnershipMenu) {
+      partnershipToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        partnershipMenu.classList.toggle('hidden');
+        programMenu.classList.add('hidden');
+      });
+    }
+
+    // Klik di luar dropdown
+    document.addEventListener('click', (event) => {
+      if (!programMenu.contains(event.target) && !programToggle.contains(event.target)) {
+        programMenu.classList.add('hidden');
+      }
+      if (!partnershipMenu.contains(event.target) && !partnershipToggle.contains(event.target)) {
+        partnershipMenu.classList.add('hidden');
+      }
+    });
+
+    // Mobile dropdown toggle
+    if (mobileProgramToggle && mobileProgramMenu) {
+      mobileProgramToggle.addEventListener("click", () => {
+        mobileProgramMenu.classList.toggle("hidden");
+      });
+    }
+
+    if (mobilePartnershipToggle && mobilePartnershipMenu) {
+      mobilePartnershipToggle.addEventListener("click", () => {
+        mobilePartnershipMenu.classList.toggle("hidden");
+      });
+    }
+
+    // Active link highlight
+    const links = document.querySelectorAll("nav a");
+    links.forEach(link => {
+      link.addEventListener("click", function () {
+        links.forEach(l => l.classList.remove("text-[#FA541C]"));
+        this.classList.add("text-[#FA541C]");
+        if (mobileMenu) mobileMenu.classList.add("hidden");
+      });
+    });
+  });
+</script>
