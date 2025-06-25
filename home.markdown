@@ -6,6 +6,6 @@ layout: default
 ---
 
 {% include hero.html %}
-{% include heritage.html %}
+{% include layanan.html %}
 {% include about.html %}
 {% include publishing-step.html %}
