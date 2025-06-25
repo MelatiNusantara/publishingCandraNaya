@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ara Lestari Press</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+  <style>
+    .body-header {
+      margin: 0;
+      font-family: 'Libre Baskerville', serif;
+      background-color: #fcf7ef;
+      color: #2c1c0f;
+    }
+
+    .header-hero {
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(rgba(26,16,8,0.75), rgba(26,16,8,0.75)),
+                  url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #f8f4e6;
+      overflow: hidden;
+    }
+
+    .header-hero-content {
+      max-width: 800px;
+      padding: 2rem;
+      z-index: 2;
+    }
+
+    .header-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: #ffe9b8;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    }
+
+    .header-hero-subtitle {
+      font-size: 1.5rem;
+      color: #fcebc1;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .header-cta-button {
+      background-color: #c49a6c;
+      color: #fff;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .header-cta-button:hover {
+      background-color: #e1b97a;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+    }
+
+    .header-overlay-fade {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255,235,180,0.1) 0%, transparent 70%);
+      z-index: 1;
+    }
+    
+    .contact-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+      padding: 1rem;
+    }
+
+    .popup-content {
+      background: linear-gradient(135deg, #fff9ef, #f8ead2);
+      padding: 2.5rem;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      text-align: center;
+      position: relative;
+      border: 2px solid #d6ba96;
+      font-family: 'Libre Baskerville', serif;
+      animation: popupFade 0.4s ease;
+    }
+
+    @keyframes popupFade {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .popup-content h2 {
+      font-family: 'Cinzel', serif;
+      color: #a47843;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .popup-content p {
+      color: #3c2b1a;
+      font-size: 1.1rem;
+      margin: 0.7rem 0;
+      line-height: 1.5;
+    }
+
+    .popup-content a {
+      color: #a06a29;
+      text-decoration: none;
+    }
+
+    .popup-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .popup-btn {
+      background-color: #c49a6c;
+      color: #fff;
+      padding: 0.7rem 1.4rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .popup-btn:hover {
+      background-color: #e1b97a;
+      transform: translateY(-2px);
+    }
+
+    .popup-btn.email {
+      background-color: #ad8458;
+    }
+
+    .popup-btn.email:hover {
+      background-color: #d6a974;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 26px;
+      font-weight: bold;
+      color: #7b5c3b;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .close-btn:hover {
+      color: #c49a6c;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      .popup-content {
+        padding: 1.5rem;
+      }
+
+      .popup-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .popup-content h2 {
+        font-size: 1.6rem;
+      }
+
+      .popup-content p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-hero-title {
+        font-size: 2.5rem;
+      }
+
+      .header-hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .header-cta-button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="body-header">
+  <header class="header-hero">
+    <div class="header-overlay-fade"></div>
+    <div class="header-hero-content">
+      <h1 class="header-hero-title">Ara Lestari Press</h1>
+      <p class="header-hero-subtitle">Dari hati penulis, untuk jiwa pembaca. Kami percaya setiap kisah layak menginspirasi dunia.</p>
+      <button class="header-cta-button">Kirim Naskah Anda</button>
+      <!-- Tambahkan setelah tombol -->
+      <div class="contact-popup" id="contactPopup">
+        <div class="popup-content">
+          <span class="close-btn" onclick="closePopup()">&times;</span>
+          <h2>Hubungi Kami</h2>
+          <p><span style="font-size:1.5rem;">📧</span> Email:<br>
+            <a href="mailto:ara.lestaripress@example.com">ara.lestaripress@example.com</a>
+          </p>
+          <p><span style="font-size:1.5rem;">📱</span> WhatsApp:<br>
+            <a href="https://wa.me/6281234567890" target="_blank">0812-3456-7890</a>
+          </p>
+          <div class="popup-buttons">
+            <a href="https://wa.me/6281234567890" target="_blank" class="popup-btn">Kirim via WhatsApp</a>
+            <a href="mailto:ara.lestaripress@example.com" class="popup-btn email">Kirim via Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    const popup = document.getElementById("contactPopup");
+    const button = document.querySelector(".header-cta-button");
+  
+    button.addEventListener("click", () => {
+      popup.classList.add("show");
+    });
+  
+    function closePopup() {
+      popup.classList.remove("show");
+    }
+  
+    window.addEventListener('click', function(e) {
+      if (e.target === popup) {
+        closePopup();
+      }
+    });
+  </script>
+</body>
+</html>
