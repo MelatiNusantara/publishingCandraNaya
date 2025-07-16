@@ -1,0 +1,182 @@
+<section class="hero-section">
+  <div class="hero-container">
+    <div class="hero-text">
+      <h1 class="hero-title">Penerbitan Buku Profesional</h1>
+      <p class="hero-subtitle">
+        Ubah naskah Anda menjadi karya yang bermakna.<br>
+        <strong>PT. Candra Naya Lestari</strong> hadir sebagai mitra terbaik Anda dalam proses penerbitan buku yang elegan, berkualitas, dan bernilai budaya.
+      </p>
+      <button class="hero-cta" id="openContactPopup">Mulai Terbitkan Sekarang</button>
+    </div>
+    <div class="hero-image">
+      <img src="assets/images/penerbitan-buku.jpg" alt="Penerbitan Buku Profesional" />
+    </div>
+  </div>
+</section>
+
+<div class="contact-popup" id="contactPopup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>Hubungi Kami</h2>
+      <p><span style="font-size:1.5rem;">📍</span> Alamat:<br>
+        Prakarsa Building, lt. 2, Jalan Gubernur Suryo 1B,<br>
+        Surabaya 60271, Jawa Timur, Indonesia
+      </p>
+      <p><span style="font-size:1.5rem;">📧</span> Email:<br>
+        <a href="#" onclick="openEmail()">sf@candranayalestari.com</a>
+      </p>
+      <p><span style="font-size:1.5rem;">📱</span> WhatsApp:<br>
+        <a href="https://api.whatsapp.com/send?phone=628113556967&text=Halo%20Ara%20Lestari%20Press%2C%20saya%20ingin%20mengirimkan%20naskah%20saya." target="_blank">0811-3556-967</a>
+      </p>
+      <div class="popup-buttons">
+        <a href="https://wa.me/628113556967?text=Halo%20Ara%20Lestari%20Press%2C%20saya%20ingin%20mengirimkan%20naskah%20saya." target="_blank" class="popup-btn">Kirim via WhatsApp</a>
+        <a href="#" onclick="openEmail()" class="popup-btn email">Kirim via Email</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .contact-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+      padding: 1rem;
+    }
+
+    .contact-popup.show {
+      display: flex;
+    }
+
+    .popup-content {
+      background: linear-gradient(135deg, #fff9ef, #f8ead2);
+      padding: 2.5rem;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      text-align: center;
+      position: relative;
+      border: 2px solid #d6ba96;
+      font-family: 'Libre Baskerville', serif;
+      animation: popupFade 0.4s ease;
+    }
+
+    @keyframes popupFade {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .popup-content h2 {
+      font-family: 'Cinzel', serif;
+      color: #a47843;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .popup-content p {
+      color: #3c2b1a;
+      font-size: 1.1rem;
+      margin: 0.7rem 0;
+      line-height: 1.5;
+    }
+
+    .popup-content a {
+      color: #a06a29;
+      text-decoration: none;
+    }
+
+    .popup-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .popup-btn {
+      background-color: #c49a6c;
+      color: #fff;
+      padding: 0.7rem 1.4rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .popup-btn:hover {
+      background-color: #e1b97a;
+      transform: translateY(-2px);
+    }
+
+    .popup-btn.email {
+      background-color: #ad8458;
+    }
+
+    .popup-btn.email:hover {
+      background-color: #d6a974;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 26px;
+      font-weight: bold;
+      color: #7b5c3b;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .close-btn:hover {
+      color: #c49a6c;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      .popup-content {
+        padding: 1.5rem;
+      }
+
+      .popup-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .popup-content h2 {
+        font-size: 1.6rem;
+      }
+
+      .popup-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const popup = document.getElementById("contactPopup");
+      const openBtn = document.getElementById("openContactPopup");
+
+      openBtn.addEventListener("click", () => {
+        popup.classList.add("show");
+      });
+
+      function closePopup() {
+        popup.classList.remove("show");
+      }
+
+      window.addEventListener('click', function(e) {
+        if (e.target === popup) {
+          closePopup();
+        }
+      });
+    });
+  </script>
